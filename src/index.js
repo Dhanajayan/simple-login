@@ -8,12 +8,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import authReducer from './store/reducers/auth'
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
 const rootReducer = combineReducers({
-    // auth: authReducer,
+    auth: authReducer,
     // home: homeReducer
 });
 
