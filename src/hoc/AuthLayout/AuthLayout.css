@@ -1,4 +1,10 @@
 .leftSection {
 	height: 100vh;
-	background-color: #12005e;
+	background-color: #0f0246;
+}
+
+@media screen and (max-width: 575px) {
+	.rightSection {
+		margin-top: 5em;
+	}	
 }

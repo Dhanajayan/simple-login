@@ -20,15 +20,15 @@ const App = (props) => {
 		</AuthLayout>
 		);
 
-       routes = (
-      	 <AppLayout>
-	        <Switch>
-	            <Route path="/home" component={HomeComponent}/>
-				<Route path="/" exact component={HomeComponent} />
-		        <Redirect to="/" />
-	        </Switch>
-         </AppLayout>
-       );
+    //    routes = (
+    //   	 <AppLayout>
+	   //      <Switch>
+	   //          <Route path="/home" component={HomeComponent}/>
+				// <Route path="/" exact component={HomeComponent} />
+		  //       <Redirect to="/" />
+	   //      </Switch>
+    //      </AppLayout>
+    //    );
 	  return (
 	    <div className="App">
 	    	{routes}
@@ -36,4 +36,4 @@ const App = (props) => {
 	  );
 }
 
-export default App;
+export default withRouter(App);

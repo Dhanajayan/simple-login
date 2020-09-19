@@ -6,17 +6,14 @@ const AuthLayout = (props) => {
 	return (
 		<>
 		<Container fluid>
-			<Row>
-			<Col md={6} xs={12}>
-				<div className="leftSection">
-					
-				</div>
-			</Col>
-			<Col md={6} xs={12}>
-				{props.children}
-			</Col>
+			<Row className="align-items-center">
+				<Col sm={6} className="d-none d-sm-block leftSection">
+				</Col>
+				<Col sm={6} xs={12} className="rightSection">
+					{props.children}
+				</Col>
 			</Row>
-			</Container>
+		</Container>
 		</>
 	) 
 }
