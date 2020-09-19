@@ -44,14 +44,12 @@ export const auth = (data, isSignup) => {
 	return dispatch => {
 		dispatch(authStart());
         let authData = {
-            userName: data["userName"],
-            password: data["password"],
+            ...data,
             returnSecureToken: true
         };
         let url = 'http://localhost:8080/api/login';
         if (!isSignup) {
             url = 'http://localhost:8080/api/signup';
-            authData = { ...authData, data};
         }
         axios.post(url, authData)
             .then(response => {
@@ -63,7 +61,7 @@ export const auth = (data, isSignup) => {
                 dispatch(checkAuthTimeout(response.data.expiresIn));
             })
             .catch(err => {
-                dispatch(authFail(err.response.data.error));
+                dispatch(authFail("Failed"));
             });
     };
 }

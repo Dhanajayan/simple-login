@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './Signup.css';
@@ -15,6 +15,7 @@ const Signup = (props) => {
 	const [lastName, setLastName] = useState('');
 	const [gender, setGender] = useState('');
 	const [country, setCountry] = useState('');
+    const error = useSelector(state => state.auth.error);
 
 	const submitHandler = (e) => {
 		e.preventDefault();
@@ -23,6 +24,7 @@ const Signup = (props) => {
 
 	return (
 		 <Form className="Signup" onSubmit={(e) => submitHandler(e)}>
+		 {error}
 		  <h1>Sign up</h1>	
 	      <FormGroup>
 	        <Label for="userName" hidden>Email</Label>
@@ -31,7 +33,8 @@ const Signup = (props) => {
 	        	 id="userName"
 	        	 placeholder="User Name"
 	        	 value={userName}
-	        	 onChange={(e) => setUserName(e.target.value)}/>
+	        	 onChange={(e) => setUserName(e.target.value)}
+	        	 required/>
 	      </FormGroup>
 	      {' '}
 	      <FormGroup>
@@ -41,7 +44,8 @@ const Signup = (props) => {
 	        	 id="password"
 	        	 placeholder="Password"
 	        	 value={password}
-	        	 onChange={(e) => setPassword(e.target.value)}/>
+	        	 onChange={(e) => setPassword(e.target.value)}
+	        	 required/>
 	      </FormGroup>
 	      {' '}
 	      {' '}
@@ -52,7 +56,8 @@ const Signup = (props) => {
 	        	 id="email"
 	        	 placeholder="Email"
 	        	 value={email}
-	        	 onChange={(e) => setEmail(e.target.value)}/>
+	        	 onChange={(e) => setEmail(e.target.value)}
+	        	 required/>
 	      </FormGroup>
 	      {' '}
   	      <FormGroup>
@@ -62,7 +67,8 @@ const Signup = (props) => {
 	        	 id="firstName"
 	        	 placeholder="First Name"
 	        	 value={firstName}
-	        	 onChange={(e) => setFirstName(e.target.value)} />
+	        	 onChange={(e) => setFirstName(e.target.value)}
+	        	 required />
 	      </FormGroup>
 	      {' '}
   	      <FormGroup>
@@ -72,26 +78,27 @@ const Signup = (props) => {
 	        	 id="lastName"
 	        	 placeholder="Last Name"
 	        	 value={lastName}
-	        	 onChange={(e) => setLastName(e.target.value)} />
+	        	 onChange={(e) => setLastName(e.target.value)} 
+	        	 required/>
 	      </FormGroup>
 	      {' '}
-	      <FormGroup tag="fieldset" inline>
+	      <FormGroup tag="fieldset" inline onChange={(e) => setGender(e.target.value)}>
 	        <legend className="col-form-label">Gender</legend>
 	          <FormGroup check inline>
 	            <Label check>
-	              <Input type="radio" name="gender" />{' '}
+	              <Input type="radio" name="gender" value="male" required/>{' '}
 	              Male
 	            </Label>
 	          </FormGroup>
 	          <FormGroup check inline>
 	            <Label check>
-	              <Input type="radio" name="gender" />{' '}
+	              <Input type="radio" name="gender" value="female" required/>{' '}
 	              Female
 	            </Label>
 	          </FormGroup>
 	          <FormGroup check inline>
 	            <Label check>
-	              <Input type="radio" name="gender" />{' '}
+	              <Input type="radio" name="gender" value="other" required/>{' '}
 	              Other
 	            </Label>
 	          </FormGroup>
@@ -102,7 +109,8 @@ const Signup = (props) => {
 	        	 name="country"
 	        	 id="country"
 	        	 value={country}
-	        	 onChange={(e) => setCountry(e.target.value)}>
+	        	 onChange={(e) => setCountry(e.target.value)}
+	        	 required>
 	          <option value="India">India</option>
 	          <option value="USA">USA</option>
 	          <option value="Sri Lanka">Sri Lanka</option>

@@ -15,7 +15,6 @@ const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    // home: homeReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(
@@ -25,9 +24,7 @@ const store = createStore(rootReducer, composeEnhancers(
 ReactDOM.render(
  <Provider store={store}>
  	<BrowserRouter>
-	  <React.StrictMode>
 	    <App />
-	  </React.StrictMode>
   	</BrowserRouter>
   </Provider>,
   document.getElementById('root')
